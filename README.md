@@ -2,8 +2,8 @@
 
 ## Stack
 - C#;
-- WPF;
-- SQL Server;
+- ASP.NET Core ;
+- Bootstrap;
 - Entity Framework 6.
 
 ## Requires
