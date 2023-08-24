@@ -9,16 +9,17 @@
 ## Requires
 Docker or PostgreSQL
 
-## Запуск с Docker
-- Расскомментировать в appsettings.json строку подключения, где Server=db.
-- Закоментировать другую строку подключения.
-- В консоли ввести docker-compose up -d
-<!-- Для полного перезапуска приложения использовать docker-compose down --rmi local -->
+## Launch using Docker
+- Scan in appsettings.json connection string, where Server=db.
+- Comment out another connection string.
+- In the console, enter
+  docker-compose upd
+<!-- To completely restart the application
+docker-compose down --rmi local-->
 
-## Запуск с PostgreSQL
-- Расскомментировать в appsettings.json строку подключения, где Server=localhost.
-- Закоментировать другую строку подключения.
-- В консоли ввести
+## Launch using local PostgreSQL
+- Scan in appsettings.json connection string, where Server=localhost.
+- Comment out another connection string.
+- In the console, enter
   cd WebPostgresqlDemo
   dotnet ef database update
- 
