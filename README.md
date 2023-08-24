@@ -4,7 +4,8 @@
 - C#;
 - ASP.NET Core MVC;
 - Bootstrap;
-- Entity Framework 6.
+- PostgreSQL;
+- Docker.
 
 ## Requires
 Docker or PostgreSQL
