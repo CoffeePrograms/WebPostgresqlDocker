@@ -1,0 +1,56 @@
+﻿
+networks:
+  postgresql_demo:
+    driver: bridge
+    
+services:
+  frontend:
+    image: postgresql_demo_frontend
+    container_name: postgresql_demo_frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+    networks:
+      - postgresql_demo
+    depends_on:
+      - db
+
+  db:
+    container_name: postgresql_demo_db
+    image: postgres:latest
+    ports:
+      - "5433:5432"
+    restart: always
+    environment:
+        POSTGRES_DB: demo
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: 123
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+      - postgres-data:/var/lib/db
+    networks:
+      - postgresql_demo
+
+  pg_admin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin4
+    ports:
+      - "5050:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=my_awesome_email@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=123
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    # restart: unless-stopped
+    depends_on:
+      - db
+    networks:
+      - postgresql_demo
+
+volumes:
+  postgres-data:
+  pgadmin-data:
